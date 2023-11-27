@@ -40,3 +40,45 @@ public class ManipulaArray {
     public static int[] criarArrayAleatorio(int tamanho) {
         Random random = new Random();
         int[] array = new int[tamanho];
+
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = random.nextInt(100); // Números aleatórios entre 0 e 99
+        }
+
+        return array;
+    }
+
+    public static int calcularSoma(int[] array) {
+        int soma = 0;
+
+        for (int elemento : array) {
+            soma += elemento;
+        }
+
+        return soma;
+    }
+
+    public static int encontrarMaiorValor(int[] array) {
+        int maior = array[0];
+
+        for (int elemento : array) {
+            if (elemento > maior) {
+                maior = elemento;
+            }
+        }
+
+        return maior;
+    }
+
+    public static int encontrarMenorValor(int[] array) {
+        int menor = array[0];
+
+        for (int elemento : array) {
+            if (elemento < menor) {
+                menor = elemento;
+            }
+        }
+
+        return menor;
+    }
+}
