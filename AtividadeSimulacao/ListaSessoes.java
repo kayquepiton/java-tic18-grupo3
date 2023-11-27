@@ -9,6 +9,6 @@ public class ListaSessoes {
     }
 
     public void adicionarSessao(Sessao sessao) {
-        sessoes.add(sessao);
+        // Implemente o método para adicionar uma sessão à lista
     }
 }

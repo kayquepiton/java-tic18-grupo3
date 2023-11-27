@@ -11,11 +11,10 @@ public class ListaUsuarios {
     }
 
     public void criarUsuario(Usuario usuario) {
-        usuarios.add(usuario);
+        // Implemente o método para adicionar usuário à lista
     }
 
     public void removerUsuario(Usuario usuario) {
-        usuarios.remove(usuario);
+        // Implemente o método para remover usuário da lista
     }
 }
-

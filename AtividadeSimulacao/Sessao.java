@@ -10,40 +10,31 @@ public class Sessao {
         this.dataHoraFim = dataHoraFim;
     }
 
-    public void logar() {
-        // Lógica de login de sessão
-        System.out.println("Usuário logado na sessão");
+    public static void logar() {
+        // Implemente o método de login de sessão aqui
     }
 
-    public void deslogar() {
-        // Lógica de logout de sessão
-        System.out.println("Usuário deslogado da sessão");
+    public static void deslogar() {
+        // Implemente o método de logout de sessão aqui
     }
 
-    public void solicitaAutenticacao() {
-        // Lógica de autenticação
-        System.out.println("Solicitação de autenticação");
+    public static void solicitarAutenticacao() {
+        // Implemente o método de solicitação de autenticação aqui
     }
 
-    public void criarAmizade(Usuario usuario1, Usuario usuario2) {
-        usuario1.adicionarAmigo(usuario2);
-        usuario2.adicionarAmigo(usuario1);
+    public static void criarAmizade(Usuario usuario1, Usuario usuario2) {
+        // Implemente o método para criar amizade entre dois usuários
     }
 
-    public void desfazerAmizade(Usuario usuario1, Usuario usuario2) {
-        usuario1.removerAmigo(usuario2);
-        usuario2.removerAmigo(usuario1);
+    public static void desfazerAmizade(Usuario usuario1, Usuario usuario2) {
+        // Implemente o método para desfazer amizade entre dois usuários
     }
 
-    public void criarPostagem(Usuario usuario, String conteudo, List<Postagem> listaPostagens) {
-        Postagem postagem = new Postagem(usuario, conteudo);
-        listaPostagens.add(postagem);
+    public static void criarPostagem(Usuario usuario, String conteudo) {
+        // Implemente o método para criar uma postagem
     }
 
-    public void listarPostagens(List<Postagem> listaPostagens) {
-        for (Postagem postagem : listaPostagens) {
-            // Exibir informações da postagem
-            System.out.println(postagem);
-        }
+    public static void listarPostagens(Usuario usuario) {
+        // Implemente o método para listar postagens de um usuário
     }
 }
