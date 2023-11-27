@@ -19,12 +19,12 @@ public class Main {
             System.out.println("1. Novo Usuário");
             System.out.println("2. Remover Usuário");
             System.out.println("3. Logar");
-            System.out.println("0. Sair");
+            System.out.println("0. Encerrar");
 
             System.out.print("Escolha uma opção: ");
             try {
                 opcao = scanner.nextInt();
-                scanner.nextLine();  // Consumir a quebra de linha após o número
+                scanner.nextLine();
 
                 switch (opcao) {
                     case 1:
@@ -44,8 +44,8 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Tente novamente.");
-                scanner.nextLine();  // Consumir a entrada inválida
-                opcao = -1;  // Atribuir um valor inválido para continuar o loop
+                scanner.nextLine();
+                opcao = -1; 
             }
         } while (opcao != 0);
 
@@ -87,17 +87,14 @@ public class Main {
                 String senhaConfirmacao = scanner.nextLine();
 
                 if (senhaConfirmacao.equals(usuarioRemover.getSenha())) {
-                    // Remover todas as amizades do usuário
                     for (Usuario amigo : usuarioRemover.getAmigos()) {
                         amigo.getAmigos().remove(usuarioRemover);
                     }
 
-                    // Remover todas as sessões do usuário
                     for (Sessao sessao : usuarioRemover.getListaSessoes()) {
                         listaSessoes.getSessoes().remove(sessao);
                     }
 
-                    // Remover o usuário da lista principal
                     listaUsuarios.removerUsuario(usuarioRemover);
 
                     System.out.println("Usuário removido com sucesso!");
@@ -146,12 +143,12 @@ public class Main {
             System.out.println("2. Criar Postagem");
             System.out.println("3. Criar Amizade");
             System.out.println("4. Desfazer Amizade");
-            System.out.println("0. Menu Anterior");
+            System.out.println("0. Sair");
 
             System.out.print("Escolha uma opção: ");
             try {
                 opcao = scanner.nextInt();
-                scanner.nextLine();  // Consumir a quebra de linha após o número
+                scanner.nextLine();
 
                 switch (opcao) {
                     case 1:
@@ -181,12 +178,10 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Tente novamente.");
-                scanner.nextLine();  // Consumir a entrada inválida
-                opcao = -1;  // Atribuir um valor inválido para continuar o loop
+                scanner.nextLine();
+                opcao = -1;
             }
         } while (opcao != 0);
-
-        scanner.close();
     }
 
     private static Usuario buscarUsuarioPorNome(String nomeUsuario) {
