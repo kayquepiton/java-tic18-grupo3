@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListaUsuarios {
@@ -8,6 +7,22 @@ public class ListaUsuarios {
     public ListaUsuarios(String nomeDaLista) {
         this.nomeDaLista = nomeDaLista;
         this.usuarios = new ArrayList<>();
+    }
+
+    public String getNomeDaLista() {
+        return nomeDaLista;
+    }
+
+    public void setNomeDaLista(String nomeDaLista) {
+        this.nomeDaLista = nomeDaLista;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public void criarUsuario(Usuario usuario) {

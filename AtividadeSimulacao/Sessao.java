@@ -1,12 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Sessao {
     private String dataHoraInicio;
     private String dataHoraFim;
 
     public Sessao(String dataHoraInicio, String dataHoraFim) {
         this.dataHoraInicio = dataHoraInicio;
+        this.dataHoraFim = dataHoraFim;
+    }
+
+    public String getDataHoraInicio() {
+        return dataHoraInicio;
+    }
+
+    public void setDataHoraInicio(String dataHoraInicio) {
+        this.dataHoraInicio = dataHoraInicio;
+    }
+
+    public String getDataHoraFim() {
+        return dataHoraFim;
+    }
+
+    public void setDataHoraFim(String dataHoraFim) {
         this.dataHoraFim = dataHoraFim;
     }
 
