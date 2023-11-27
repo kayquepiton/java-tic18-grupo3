@@ -10,16 +10,19 @@ public class Sessao {
         this.dataHoraFim = dataHoraFim;
     }
 
-    public static void logar() {
+    public void logar() {
         // Lógica de login de sessão
+        System.out.println("Usuário logado na sessão");
     }
 
-    public static void deslogar() {
+    public void deslogar() {
         // Lógica de logout de sessão
+        System.out.println("Usuário deslogado da sessão");
     }
 
     public void solicitaAutenticacao() {
         // Lógica de autenticação
+        System.out.println("Solicitação de autenticação");
     }
 
     public void criarAmizade(Usuario usuario1, Usuario usuario2) {
@@ -32,14 +35,15 @@ public class Sessao {
         usuario2.removerAmigo(usuario1);
     }
 
-    public void criarPostagem(Usuario usuario, String conteudo) {
+    public void criarPostagem(Usuario usuario, String conteudo, List<Postagem> listaPostagens) {
         Postagem postagem = new Postagem(usuario, conteudo);
-        usuario.listaPostagens.add(postagem);
+        listaPostagens.add(postagem);
     }
 
-    public void listarPostagens(Usuario usuario) {
-        for (Postagem postagem : usuario.listaPostagens) {
+    public void listarPostagens(List<Postagem> listaPostagens) {
+        for (Postagem postagem : listaPostagens) {
             // Exibir informações da postagem
+            System.out.println(postagem);
         }
     }
 }
