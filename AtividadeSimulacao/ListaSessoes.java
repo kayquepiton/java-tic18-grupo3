@@ -1,5 +1,5 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListaSessoes {
     private List<Sessao> sessoes;
@@ -17,6 +17,6 @@ public class ListaSessoes {
     }
 
     public void adicionarSessao(Sessao sessao) {
-        // Implemente o método para adicionar uma sessão à lista
+        this.sessoes.add(sessao);
     }
 }

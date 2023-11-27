@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
@@ -65,11 +66,13 @@ public class Usuario {
         this.amigos = amigos;
     }
 
-    public void logar() {
-        // Implemente o método de login aqui
+    public void logar(ListaSessoes listaSessoes) {
+        // Implementação do método de login aqui
+        Sessao.logar(this, listaSessoes);
     }
 
-    public void deslogar(Sessao sessao) {
-        // Implemente o método de logout aqui
+    public void deslogar(ListaSessoes listaSessoes) {
+        // Implementação do método de logout aqui
+        Sessao.deslogar(this, listaSessoes);
     }
 }

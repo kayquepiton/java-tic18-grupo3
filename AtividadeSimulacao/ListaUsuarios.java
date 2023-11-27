@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListaUsuarios {
@@ -27,9 +28,11 @@ public class ListaUsuarios {
 
     public void criarUsuario(Usuario usuario) {
         // Implemente o método para adicionar usuário à lista
+        this.usuarios.add(usuario);
     }
 
     public void removerUsuario(Usuario usuario) {
         // Implemente o método para remover usuário da lista
+        this.usuarios.remove(usuario);
     }
 }
