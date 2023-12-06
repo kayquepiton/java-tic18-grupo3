@@ -30,7 +30,7 @@ Empresa{
             void listarTodosPagamentos()
             void listarPagamentosFatura()
             void ListarReembolsos()
-            void consultarReembolsoFatura
+            void consultarReembolsoFatura()
         
         void menuFalhas()
             void incluirFalhaComMatricula()
