@@ -1,5 +1,6 @@
 package empresa;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,7 +18,7 @@ public class Empresa {
     	
     	String acao = "";
     	Scanner sc = new Scanner(System.in);
-    	while(acao != "0") {
+    	 while (!acao.equals("0")) {
     		System.out.println("-----Menu Geral-----");
         	System.out.println("1 - Menu de Clientes");
         	System.out.println("2 - Menu de Imoveis");
@@ -65,7 +66,7 @@ public class Empresa {
     public void menuCliente() {
     	String acao = "";
     	Scanner sc = new Scanner(System.in);
-    	while(acao != "0") {
+    	 while (!acao.equals("0")) {
     		System.out.println("-----Menu de Clientes-----");
         	System.out.println("1 - Incluir cliente");
         	System.out.println("2 - Consultar cliente");
@@ -386,24 +387,66 @@ public class Empresa {
     
     //PESSOA 4 - PAGAMENTO
     public void incluirPagamento() {
-    	
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Informe o ID da fatura:");
+        String idFatura = sc.nextLine();
+
+        System.out.println("Informe o valor do pagamento:");
+        float valorPagamento = Float.parseFloat(sc.nextLine());
+
+        Pagamento pagamento = new Pagamento();
+        pagamento.setValor(valorPagamento);
+        pagamento.setData(LocalDate.now());
+
+        Fatura faturaEncontrada = null;
+        for (Fatura fatura : listaFaturas) {
+            if (fatura.getId().equals(idFatura)) {
+                faturaEncontrada = fatura;
+                break;
+            }
+        }
+
+        if (faturaEncontrada != null) {
+            faturaEncontrada.getPagamentos().add(pagamento);
+            System.out.println("Pagamento incluído com sucesso!");
+        } else {
+            System.out.println("Fatura não encontrada. Pagamento não incluído.");
+        }
     }
     
     public void listarTodosPagamentos() {
     	
+        if (listaFaturas.isEmpty()) {
+            System.out.println("Não há faturas disponíveis.");
+        } else {
+            for (Fatura fatura : listaFaturas) {
+                System.out.println("ID da Fatura: " + fatura.getId());
+                
+                if (fatura.getPagamentos().isEmpty()) {
+                    System.out.println("Não há pagamentos para esta fatura.");
+                } else {
+                    System.out.println("Pagamentos:");
+                    for (Pagamento pagamento : fatura.getPagamentos()) {
+                        System.out.println("  Valor: " + pagamento.getValor());
+                        System.out.println("  Data: " + pagamento.getData());
+                        System.out.println("------");
+                    }
+                }
+            }
+        }
     }
     
-    public void listarPagamentosFatura() {
-    	
-    }
-    
-    public void ListarReembolsos() {
-    	
-    }
-    
-    public void consultarReembolsoFatura() {
-    	
-    }
+   public void ListarReembolsos() {
+	   
+   }
+   
+   public void listarPagamentosFatura() {
+	   
+   }
+   public void consultarReembolsoFatura() {
+	   
+   }
     
 	
     

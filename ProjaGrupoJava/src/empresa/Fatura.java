@@ -80,4 +80,6 @@ public class Fatura {
 	public void setPagamentos(List<Pagamento> pagamentos) {
 		this.pagamentos = pagamentos;
 	}
+
+
 }

@@ -12,6 +12,11 @@ public class Pagamento {
 		this.valor = valor;
 		this.data = data;
 	}
+	
+	public Pagamento() {
+		super();
+	}
+
 
 	//Getters e Setters
 	public float getValor() {
