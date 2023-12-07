@@ -9,6 +9,7 @@ public class Empresa {
 	private List<Cliente> listaClientes = new ArrayList<Cliente>();
     private List<Imovel> listaImoveis = new ArrayList<Imovel>();
     private List<Fatura> listaFaturas = new ArrayList<Fatura>();
+	private List<Reparo> listaReparos = new ArrayList<Reparo>();
     private List<Falha> listaFalhas = new ArrayList<Falha>();
     private List<Reembolso> listaReembolsos = new ArrayList<Reembolso>();
 	
@@ -812,13 +813,36 @@ public class Empresa {
     	
     }
     
-    //Parte do Submenu de reparo*
     public void listarReparosAbertos() {
-    	
+        System.out.println("-----Lista de Reparos Abertos-----");
+        for (Reparo reparo : listaReparos) {
+            if (!reparo.isEstadoResolvido()) {
+                System.out.println("Descrição: " + reparo.getDescricao());
+                System.out.println("Previsão de Reparo: " + reparo.getPrevisao());
+                System.out.println("Data de Início: " + reparo.getDataInicio());
+                System.out.println("-----------------------");
+            }
+        }
     }
-    
+
     public void encerrarReparo() {
-    	
+        Scanner sc = new Scanner(System.in);
+        System.out.println("-----Encerrar Reparo-----");
+
+        System.out.println("Informe a descrição do reparo que deseja encerrar:");
+        String descricaoReparo = sc.nextLine();
+        sc.close();
+
+        for (Reparo reparo : listaReparos) {
+            if (reparo.getDescricao().equals(descricaoReparo) && !reparo.isEstadoResolvido()) {
+                reparo.setEstadoResolvido(true);
+                System.out.println("Reparo encerrado com sucesso.");
+                return;
+            }
+        }
+
+        System.out.println("Reparo não encontrado ou já encerrado.");
     }
+
     
 }
