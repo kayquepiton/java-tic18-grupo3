@@ -492,29 +492,135 @@ public class Empresa {
     }
     
     
-    
-    
-    
     //PESSOA 2 - IMOVEL
-    public void incluirImovel() {
-    	
-    }
-    
-    public void consultarImovel() {
-    	
-    }
-    
-    public void listarImovel() {
-    	
-    }
-    
-    public void excluirImovel() {
-    	
-    }
-    
-    public void alterarImovel() {
-    	
-    }
+   	public void incluirImovel() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("-----Incluindo novo imóvel-----");
+
+		System.out.println("Matrícula do imóvel: ");
+		String matricula = sc.nextLine();
+
+		System.out.println("Endereço do imóvel: ");
+		String endereco = sc.nextLine();
+
+		System.out.println("Última leitura: ");
+		float ultimaLeitura = Float.parseFloat(sc.nextLine());
+
+		System.out.println("Penúltima leitura: ");
+		float penultimaLeitura = Float.parseFloat(sc.nextLine());
+
+		Imovel imovel = new Imovel(matricula, endereco, ultimaLeitura, penultimaLeitura);
+		listaImoveis.add(imovel);
+
+		System.out.println("Imóvel cadastrado com sucesso");
+	}
+
+	public void consultarImovel() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("-----Consultando imóvel-----");
+
+		System.out.println("Matrícula do imóvel: ");
+		String matricula = sc.nextLine();
+
+		boolean check = false;
+		for (Imovel imovel : listaImoveis) {
+			if (matricula.equals(imovel.getMatricula())) {
+				check = true;
+				System.out.println("Matrícula: " + imovel.getMatricula());
+				System.out.println("Endereço: " + imovel.getEndereco());
+				System.out.println("Última leitura: " + imovel.getUltimaLeitura());
+				System.out.println("Penúltima leitura: " + imovel.getPenultimaLeitura());
+				break;
+			}
+		}
+
+		if (!check) {
+			System.out.println("Imóvel não encontrado");
+		}
+	}
+
+	public void listarImovel() {
+		if (listaImoveis.isEmpty()) {
+			System.out.println("A lista de imóveis está vazia");
+		} else {
+			System.out.println("-----Listando todos os imóveis-----");
+			for (Imovel imovel : listaImoveis) {
+				System.out.println("Matrícula: " + imovel.getMatricula());
+				System.out.println("Endereço: " + imovel.getEndereco());
+				System.out.println("Última leitura: " + imovel.getUltimaLeitura());
+				System.out.println("Penúltima leitura: " + imovel.getPenultimaLeitura());
+				System.out.println("------");
+			}
+		}
+	}
+
+	public void excluirImovel() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("-----Excluindo imóvel-----");
+
+		System.out.println("Matrícula do imóvel: ");
+		String matricula = sc.nextLine();
+
+		boolean check = false;
+		for (Imovel imovel : listaImoveis) {
+			if (matricula.equals(imovel.getMatricula())) {
+				check = true;
+				listaImoveis.remove(imovel);
+				System.out.println("Imóvel excluído com sucesso");
+				break;
+			}
+		}
+
+		if (!check) {
+			System.out.println("Imóvel não encontrado");
+		}
+	}
+
+	public void alterarImovel() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("-----Alterando imóvel-----");
+
+		System.out.println("Matrícula do imóvel: ");
+		String matricula = sc.nextLine();
+
+		boolean check = false;
+		for (Imovel imovel : listaImoveis) {
+			if (matricula.equals(imovel.getMatricula())) {
+				check = true;
+
+				System.out.println("Novo endereço (deixe em branco para manter o atual): ");
+				String novoEndereco = sc.nextLine();
+				if (!novoEndereco.isEmpty()) {
+					imovel.setEndereco(novoEndereco);
+					System.out.println("Endereço alterado com sucesso");
+				}
+
+				System.out.println("Nova última leitura (deixe em branco para manter a atual): ");
+				String novaUltimaLeituraStr = sc.nextLine();
+				if (!novaUltimaLeituraStr.isEmpty()) {
+					float novaUltimaLeitura = Float.parseFloat(novaUltimaLeituraStr);
+					imovel.setUltimaLeitura(novaUltimaLeitura);
+					System.out.println("Última leitura alterada com sucesso");
+				}
+
+				System.out.println("Nova penúltima leitura (deixe em branco para manter a atual): ");
+				String novaPenultimaLeituraStr = sc.nextLine();
+				if (!novaPenultimaLeituraStr.isEmpty()) {
+					float novaPenultimaLeitura = Float.parseFloat(novaPenultimaLeituraStr);
+					imovel.setPenultimaLeitura(novaPenultimaLeitura);
+					System.out.println("Penúltima leitura alterada com sucesso");
+				}
+
+				System.out.println("Imóvel alterado com sucesso");
+				break;
+			}
+		}
+
+		if (!check) {
+			System.out.println("Imóvel não encontrado");
+		}
+	}
+
     
     
     
