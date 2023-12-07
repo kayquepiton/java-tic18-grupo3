@@ -437,13 +437,41 @@ public class Empresa {
         }
     }
     
-   public void ListarReembolsos() {
+    public void listarPagamentosFatura() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Informe o ID da fatura:");
+        String idFatura = sc.nextLine();
+
+        Fatura faturaEncontrada = null;
+        for (Fatura fatura : listaFaturas) {
+            if (fatura.getId().equals(idFatura)) {
+                faturaEncontrada = fatura;
+                break;
+            }
+        }
+
+        if (faturaEncontrada != null) {
+            if (faturaEncontrada.getPagamentos().isEmpty()) {
+                System.out.println("Não há pagamentos para esta fatura.");
+            } else {
+                System.out.println("Pagamentos da Fatura " + idFatura + ":");
+                for (Pagamento pagamento : faturaEncontrada.getPagamentos()) {
+                    System.out.println("  Valor: " + pagamento.getValor());
+                    System.out.println("  Data: " + pagamento.getData());
+                    System.out.println("------");
+                }
+            }
+        } else {
+            System.out.println("Fatura não encontrada.");
+        }
+    }
+    
+    
+    public void ListarReembolsos() {
 	   
    }
    
-   public void listarPagamentosFatura() {
-	   
-   }
    public void consultarReembolsoFatura() {
 	   
    }
