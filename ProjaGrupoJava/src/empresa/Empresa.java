@@ -770,7 +770,8 @@ public class Empresa {
 
         System.out.println("Informe o ID da fatura:");
         String idFatura = sc.nextLine();
-
+		sc.close();
+		
         Fatura faturaEncontrada = null;
         for (Fatura fatura : listaFaturas) {
             if (fatura.getId().equals(idFatura)) {
