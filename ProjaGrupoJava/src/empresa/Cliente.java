@@ -8,13 +8,21 @@ public class Cliente {
 	//Construtor
 	public Cliente(String nome, String cpf, Imovel imovel) {
 		this.nome = nome;
-		this.cpf = cpf;
+		if (validarCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            System.out.println("CPF inválido. Não foi possível atribuir ao cliente.");
+        }
 		this.imovel = imovel;
 	}
 
 	public Cliente(String nome, String cpf) {
 		this.nome = nome;
-		this.cpf = cpf;
+		if (validarCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            System.out.println("CPF inválido. Não foi possível atribuir ao cliente.");
+        }
 	}
 
 	//Getters e Setters
@@ -42,4 +50,18 @@ public class Cliente {
 	public void setImovel(Imovel imovel) {
 		this.imovel = imovel;
 	}
+	 public static boolean validarCPF(String cpf) {
+
+	        cpf = cpf.replaceAll("[^0-9]", "");
+
+	        if (cpf.length() != 11) {
+	            return false;
+	        }
+
+	        if (!cpf.matches("\\d{11}")) {
+	            return false;
+	        }
+
+	        return true;
+	    }
 }
