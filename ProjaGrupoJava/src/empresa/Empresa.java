@@ -800,18 +800,70 @@ public class Empresa {
         }
     }
     
-	
-    
-    
     
     //PESSOA 5 - FALHA E REPARO
     public void incluirFalhaComMatricula() {
-    	
-    }
-    
-    public void incluirFalhaSemMatricula() {
-    	
-    }
+		Scanner sc = new Scanner(System.in);
+		System.out.println("-----Incluindo falha com matrícula-----");
+	
+		// Capturar os dados da falha
+		System.out.println("Descrição da falha: ");
+		String descricao = sc.nextLine();
+	
+		System.out.println("Previsão de início (AAAA-MM-DD): ");
+		LocalDate previsaoInicio = LocalDate.parse(sc.nextLine());
+	
+		System.out.println("Data de início (AAAA-MM-DD): ");
+		LocalDate dataInicio = LocalDate.parse(sc.nextLine());
+	
+		System.out.println("Data de fim (AAAA-MM-DD): ");
+		LocalDate dataFim = LocalDate.parse(sc.nextLine());
+	
+		System.out.println("Tipo de falha: ");
+		String tipoFalha = sc.nextLine();
+
+		sc.close();
+	
+		// Criar uma nova falha
+		Falha novaFalha = new Falha(descricao, previsaoInicio, dataInicio, dataFim, tipoFalha);
+	
+		// Adicionar a falha à lista de falhas na empresa
+		listaFalhas.add(novaFalha);
+	
+		System.out.println("Falha com matrícula incluída com sucesso!");
+	}
+	
+	public void incluirFalhaSemMatricula() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("-----Incluindo falha sem matrícula-----");
+	
+		// Capturar os dados da falha
+		System.out.println("Descrição da falha: ");
+		String descricao = sc.nextLine();
+	
+		System.out.println("Previsão de início (AAAA-MM-DD): ");
+		LocalDate previsaoInicio = LocalDate.parse(sc.nextLine());
+	
+		System.out.println("Data de início (AAAA-MM-DD): ");
+		LocalDate dataInicio = LocalDate.parse(sc.nextLine());
+	
+		System.out.println("Data de fim (AAAA-MM-DD): ");
+		LocalDate dataFim = LocalDate.parse(sc.nextLine());
+	
+		System.out.println("Tipo de falha: ");
+		String tipoFalha = sc.nextLine();
+
+		sc.close();
+	
+		// Criar uma nova falha
+		Falha novaFalha = new Falha(descricao, previsaoInicio, dataInicio, dataFim, tipoFalha);
+	
+		// Adicionar a falha à lista de falhas na empresa
+		listaFalhas.add(novaFalha);
+	
+		System.out.println("Falha sem matrícula incluída com sucesso!");
+	}
+	
     
     public void listarReparosAbertos() {
         System.out.println("-----Lista de Reparos Abertos-----");
