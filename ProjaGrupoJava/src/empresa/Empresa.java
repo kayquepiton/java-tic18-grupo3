@@ -320,23 +320,175 @@ public class Empresa {
     
     //PESSOA 1 - CLIENTE
     public void incluirCliente() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("-----Incluindo novo cliente-----");
     	
+    	System.out.println("Nome: ");
+    	String nome = sc.nextLine();
+    	
+    	System.out.println("CPF: ");
+    	String cpf= sc.nextLine();
+    	
+    	System.out.println("Possui imovel cadastrado? (sim / nao): ");
+    	String resposta = sc.nextLine();
+    	
+    	if(resposta != "sim") {
+    		System.out.println("Cliente cadastrado com sucesso");
+    		return;
+    	}
+    	
+    	System.out.println("Matricula do imovel: ");
+    	String matricula = sc.nextLine();
+    	
+    	boolean check = false;
+    	int index = 0;
+    	for(int i = 0; i < listaImoveis.size(); i++) {
+    		if(matricula == listaImoveis.get(i).getMatricula()) {
+    			check = true;
+    			index = i;
+    			break;
+    		}
+    	}
+    	
+    	if(check) {
+    		Cliente cliente = new Cliente(nome, cpf, listaImoveis.get(index));
+    		listaClientes.add(cliente);
+    		System.out.println("Cliente cadastrado com sucesso");
+    	}
+    	
+    	else {
+        	System.out.println("Imovel nao encontrado, cadastrando cliente sem imovel");
+        	Cliente cliente = new Cliente(nome, cpf);
+    		listaClientes.add(cliente);
+    		System.out.println("Cliente cadastrado com sucesso");
+    	}
     }
     
     public void consultarCliente() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("-----Consultando cliente-----");
     	
+    	System.out.println("CPF: ");
+    	String cpf= sc.nextLine();
+    	
+    	boolean check = false;
+    	int index = 0;
+    	for(int i = 0; i < listaClientes.size(); i++) {
+    		if(cpf == listaClientes.get(i).getCpf()) {
+    			check = true;
+    			index = i;
+    			break;
+    		}
+    	}
+    	
+    	if(!check) {
+    		System.out.println("Cliente nao encontrado");
+    		return;
+    	}
+    	
+    	Cliente c = listaClientes.get(index);
+    	
+    	System.out.println("Nome: " + c.getNome() + " - CPF: " + c.getCpf());
     }
     
     public void listarCliente() {
+    	if(listaClientes.size() == 0){
+    		System.out.println("A lista de clientes esta vazia");
+    		return;
+    	}
     	
+    	System.out.println("-----Listando todos os clientes-----");
+    	for(int i = 0; i < listaClientes.size(); i++) {
+        	Cliente c = listaClientes.get(i);        	
+        	System.out.println("Nome: " + c.getNome() + " - CPF: " + c.getCpf());
+    	}    	
     }
     
     public void excluirCliente() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("-----Excluindo cliente-----");
     	
+    	System.out.println("CPF: ");
+    	String cpf= sc.nextLine();
+    	
+    	boolean check = false;
+    	int index = 0;
+    	for(int i = 0; i < listaClientes.size(); i++) {
+    		if(cpf == listaClientes.get(i).getCpf()) {
+    			check = true;
+    			index = i;
+    			break;
+    		}
+    	}
+    	
+    	if(!check) {
+    		System.out.println("Cliente nao encontrado");
+    		return;
+    	}
+    	
+    	listaClientes.remove(index);    	
+    	System.out.println("Cliente excluido com sucesso");
     }
     
     public void alterarCliente() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("-----Alterando cliente-----");
     	
+    	System.out.println("CPF: ");
+    	String cpf= sc.nextLine();
+    	
+    	boolean check = false;
+    	int index = 0;
+    	for(int i = 0; i < listaClientes.size(); i++) {
+    		if(cpf == listaClientes.get(i).getCpf()) {
+    			check = true;
+    			index = i;
+    			break;
+    		}
+    	}
+    	
+    	if(!check) {
+    		System.out.println("Cliente nao encontrado");
+    		return;
+    	}
+    	
+    	String acao = "";
+    	System.out.println("Deseja alterar o nome? (sim / nao): ");
+    	acao = sc.nextLine();
+    	if(acao == "sim") {
+    		System.out.println("Nome: ");
+    		String nome = sc.nextLine();
+    		listaClientes.get(index).setNome(nome);
+    		System.out.println("Nome alterado com sucesso");
+    	}
+    	
+    	System.out.println("Deseja alterar o imovel? (sim / nao): ");
+    	acao = sc.nextLine();
+    	if(acao == "sim") {
+    		System.out.println("Matricula do imovel: ");
+        	String matricula = sc.nextLine();
+        	
+        	boolean checkM = false;
+        	int indexM = 0;
+        	for(int i = 0; i < listaImoveis.size(); i++) {
+        		if(matricula == listaImoveis.get(i).getMatricula()) {
+        			checkM = true;
+        			indexM = i;
+        			break;
+        		}
+        	}
+        	
+        	if(!checkM) {
+            	System.out.println("Imovel nao encontrado");
+        	}
+        	
+        	else {
+        		listaClientes.get(index).setImovel(listaImoveis.get(indexM));
+        		System.out.println("Imovel alterado com sucesso");
+        	}
+    	}
+    	
+    	System.out.println("Cliente alterado com sucesso");
     }
     
     

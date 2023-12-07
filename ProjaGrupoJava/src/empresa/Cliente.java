@@ -12,6 +12,11 @@ public class Cliente {
 		this.imovel = imovel;
 	}
 
+	public Cliente(String nome, String cpf) {
+		this.nome = nome;
+		this.cpf = cpf;
+	}
+
 	//Getters e Setters
 	public String getNome() {
 		return nome;
