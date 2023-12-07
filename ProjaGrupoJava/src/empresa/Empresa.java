@@ -727,12 +727,56 @@ public class Empresa {
     
     
     public void ListarReembolsos() {
-	   
+ 
+        if (listaReembolsos.isEmpty()) {
+            System.out.println("Não há reembolsos disponíveis.");
+        } else {
+            System.out.println("Lista de Reembolsos:");
+
+            for (Reembolso reembolso : listaReembolsos) {
+                System.out.println("  Valor: " + reembolso.getValor());
+                System.out.println("  Data: " + reembolso.getData());
+                System.out.println("------");
+            }
+        }
    }
    
-   public void consultarReembolsoFatura() {
-	   
-   }
+    public void consultarReembolsoFatura() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Informe o ID da fatura:");
+        String idFatura = sc.nextLine();
+
+        Fatura faturaEncontrada = null;
+        for (Fatura fatura : listaFaturas) {
+            if (fatura.getId().equals(idFatura)) {
+                faturaEncontrada = fatura;
+                break;
+            }
+        }
+
+        if (faturaEncontrada != null) {
+            if (faturaEncontrada.getPagamentos().isEmpty()) {
+                System.out.println("Não há pagamentos para esta fatura.");
+            } else {
+                System.out.println("Reembolsos da Fatura " + idFatura + ":");
+
+                for (Pagamento pagamento : faturaEncontrada.getPagamentos()) {
+                    Reembolso reembolso = pagamento.getReembolso();
+
+                    if (reembolso != null) {
+                        System.out.println("  Valor do Reembolso: " + reembolso.getValor());
+                        System.out.println("  Data do Reembolso: " + reembolso.getData());
+                        System.out.println("------");
+                    } else {
+                        System.out.println("  Pagamento sem reembolso associado.");
+                    }
+                }
+            }
+        } else {
+            System.out.println("Fatura não encontrada.");
+        }
+    }
     
 	
     
