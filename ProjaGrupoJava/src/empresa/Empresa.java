@@ -450,6 +450,8 @@ public class Empresa {
     	System.out.println("CPF: ");
     	String cpf= sc.nextLine();
     	
+		sc.close();
+		
     	boolean check = false;
     	int index = 0;
     	for(int i = 0; i < listaClientes.size(); i++) {
