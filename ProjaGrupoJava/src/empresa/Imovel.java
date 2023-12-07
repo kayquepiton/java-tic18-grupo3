@@ -58,8 +58,8 @@ public class Imovel {
 		return listaFaturas;
 	}
 
-	public void setListaFaturas(List<Fatura> listaFaturas) {
-		this.listaFaturas = listaFaturas;
+	public void setListaFaturas(Fatura fatura) {
+		this.listaFaturas.add(fatura);
 	}
 
 	public List<Falha> getListaFalhas() {

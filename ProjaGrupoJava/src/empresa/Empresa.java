@@ -31,7 +31,7 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
-			sc.close();
+			
 
         	switch(acao) {
         	case "0":
@@ -82,10 +82,11 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
-			sc.close();
+			
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
+        		menuEmpresa();
             	break;
             	
         	case "1":
@@ -131,10 +132,11 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
-			sc.close();
+			
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
+        		menuEmpresa();
             	break;
             	
         	case "1":
@@ -178,10 +180,11 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
-			sc.close();
+			
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
+        		menuEmpresa();
             	break;
             	
         	case "1":
@@ -219,10 +222,11 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
-			sc.close();
+			
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
+        		menuEmpresa();
             	break;
             	
         	case "1":
@@ -266,10 +270,11 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
-			sc.close();
+			
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
+        		menuEmpresa();
             	break;
             	
         	case "1":
@@ -304,10 +309,11 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
-			sc.close();
+			
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
+        		menuEmpresa();
             	break;
             	
         	case "1":
@@ -325,10 +331,6 @@ public class Empresa {
     	}
     }
     
-    
-    //FUNCOES QUE PRECISAM SER IMPLEMENTADAS
-    
-    //PESSOA 1 - CLIENTE
     public void incluirCliente() {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("-----Incluindo novo cliente-----");
@@ -381,7 +383,7 @@ public class Empresa {
     	
     	System.out.println("CPF: ");
     	String cpf= sc.nextLine();
-    	sc.close();
+    	
 
     	boolean check = false;
     	int index = 0;
@@ -422,7 +424,7 @@ public class Empresa {
     	
     	System.out.println("CPF: ");
     	String cpf= sc.nextLine();
-    	sc.close();
+    	
 		
     	boolean check = false;
     	int index = 0;
@@ -450,7 +452,7 @@ public class Empresa {
     	System.out.println("CPF: ");
     	String cpf= sc.nextLine();
     	
-		sc.close();
+		
 		
     	boolean check = false;
     	int index = 0;
@@ -508,7 +510,6 @@ public class Empresa {
     }
     
     
-    //PESSOA 2 - IMOVEL
    	public void incluirImovel() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("-----Incluindo novo imóvel-----");
@@ -525,7 +526,7 @@ public class Empresa {
 		System.out.println("Penúltima leitura: ");
 		float penultimaLeitura = Float.parseFloat(sc.nextLine());
 
-		sc.close();
+		
 
 		Imovel imovel = new Imovel(matricula, endereco, ultimaLeitura, penultimaLeitura);
 		listaImoveis.add(imovel);
@@ -539,7 +540,7 @@ public class Empresa {
 
 		System.out.println("Matrícula do imóvel: ");
 		String matricula = sc.nextLine();
-		sc.close();
+		
 
 		boolean check = false;
 		for (Imovel imovel : listaImoveis) {
@@ -579,7 +580,7 @@ public class Empresa {
 
 		System.out.println("Matrícula do imóvel: ");
 		String matricula = sc.nextLine();
-		sc.close();
+		
 
 		boolean check = false;
 		for (Imovel imovel : listaImoveis) {
@@ -625,7 +626,7 @@ public class Empresa {
 
 				System.out.println("Nova penúltima leitura (deixe em branco para manter a atual): ");
 				String novaPenultimaLeituraStr = sc.nextLine();
-				sc.close();
+				
 				
 				if (!novaPenultimaLeituraStr.isEmpty()) {
 					float novaPenultimaLeitura = Float.parseFloat(novaPenultimaLeituraStr);
@@ -643,29 +644,78 @@ public class Empresa {
 		}
 	}
 
-    
-    
-    
-    
-    
-    //PESSOA 3 - FATURA
     public void incluirFatura() {
+    	Scanner sc = new Scanner(System.in);
     	
+    	System.out.println("Matricula do imovel: ");
+    	String matricula = sc.nextLine();
+    	
+    	boolean checkM = false;
+    	int indexM = 0;
+    	for (Imovel imovel : listaImoveis) {
+			if (matricula.equals(imovel.getMatricula())) {
+				checkM = true;
+				break;
+			}
+			indexM++;
+		}
+    	
+    	if(!checkM) {
+        	System.out.println("Imovel nao encontrado");
+    	}
+    	else {
+    		String id =  String.valueOf(listaFaturas.size() + 1);
+    		float ultimaLeitura = listaImoveis.get(indexM).getUltimaLeitura();
+    		float penultimaLeitura = listaImoveis.get(indexM).getPenultimaLeitura();
+    		float valor = (ultimaLeitura - penultimaLeitura) * 10;
+    		
+    		
+    		Fatura fatura = new Fatura(id, LocalDate.now(), ultimaLeitura, penultimaLeitura, valor);
+    		listaImoveis.get(indexM).setListaFaturas(fatura);
+    		listaFaturas.add(fatura);
+
+    		System.out.println("Fatura "+ id +" cadastrada com sucesso");
+    	}
     }
 
     public void listarTodasFaturas() {
-    	
+		if (listaFaturas.isEmpty()) {
+			System.out.println("A lista de faturas está vazia");
+		} else {
+			System.out.println("-----Listando todas Faturas -----");
+			for (Fatura fatura : listaFaturas) {
+				String status = fatura.isEstadoPagamento() ? "PAGO" : "EM ABERTO";
+				System.out.println("Id: " + fatura.getId());
+				System.out.println("Última leitura: " + fatura.getUltimaLeitura() + " KWh");
+				System.out.println("Penúltima leitura: " + fatura.getPenultimaLeitura()+ " KWh");
+				System.out.println("Valor: R$" + fatura.getValor());
+				System.out.println("Data: " + fatura.getData());
+				System.out.println("Status: " + status);
+				System.out.println("------");
+			}
+		}
     }
     
     public void listarFaturasAbertas() {
-    	
+    	if (listaFaturas.isEmpty()) {
+            System.out.println("A lista de faturas está vazia");
+        } else {
+            System.out.println("-----Listando todas Faturas (em aberto) -----");
+            for (Fatura fatura : listaFaturas) {
+                if (!fatura.isEstadoPagamento()) {
+                    System.out.println("Id: " + fatura.getId());
+                    System.out.println("Última leitura: " + fatura.getUltimaLeitura() + " KWh");
+                    System.out.println("Penúltima leitura: " + fatura.getPenultimaLeitura()+ " KWh");
+                    System.out.println("Valor: R$" + fatura.getValor());
+                    System.out.println("Data: " + fatura.getData());
+                    System.out.println("Status: EM ABERTO");
+                    System.out.println("------");
+                }
+            }
+        }
     }
     
-	
     
-    
-    
-    //PESSOA 4 - PAGAMENTO
     public void incluirPagamento() {
         Scanner sc = new Scanner(System.in);
 
@@ -674,7 +724,7 @@ public class Empresa {
 
         System.out.println("Informe o valor do pagamento:");
         float valorPagamento = Float.parseFloat(sc.nextLine());
-		sc.close();
+		
 
         Pagamento pagamento = new Pagamento();
         pagamento.setValor(valorPagamento);
@@ -723,7 +773,7 @@ public class Empresa {
 
         System.out.println("Informe o ID da fatura:");
         String idFatura = sc.nextLine();
-		sc.close();
+		
 
         Fatura faturaEncontrada = null;
         for (Fatura fatura : listaFaturas) {
@@ -770,7 +820,7 @@ public class Empresa {
 
         System.out.println("Informe o ID da fatura:");
         String idFatura = sc.nextLine();
-		sc.close();
+		
 		
         Fatura faturaEncontrada = null;
         for (Fatura fatura : listaFaturas) {
@@ -804,12 +854,10 @@ public class Empresa {
     }
     
     
-    //PESSOA 5 - FALHA E REPARO
     public void incluirFalhaComMatricula() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("-----Incluindo falha com matrícula-----");
 	
-		// Capturar os dados da falha
 		System.out.println("Descrição da falha: ");
 		String descricao = sc.nextLine();
 	
@@ -825,12 +873,8 @@ public class Empresa {
 		System.out.println("Tipo de falha: ");
 		String tipoFalha = sc.nextLine();
 
-		sc.close();
-	
-		// Criar uma nova falha
 		Falha novaFalha = new Falha(descricao, previsaoInicio, dataInicio, dataFim, tipoFalha);
 	
-		// Adicionar a falha à lista de falhas na empresa
 		listaFalhas.add(novaFalha);
 	
 		System.out.println("Falha com matrícula incluída com sucesso!");
@@ -839,8 +883,7 @@ public class Empresa {
 	public void incluirFalhaSemMatricula() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("-----Incluindo falha sem matrícula-----");
-	
-		// Capturar os dados da falha
+
 		System.out.println("Descrição da falha: ");
 		String descricao = sc.nextLine();
 	
@@ -856,12 +899,8 @@ public class Empresa {
 		System.out.println("Tipo de falha: ");
 		String tipoFalha = sc.nextLine();
 
-		sc.close();
-	
-		// Criar uma nova falha
 		Falha novaFalha = new Falha(descricao, previsaoInicio, dataInicio, dataFim, tipoFalha);
 	
-		// Adicionar a falha à lista de falhas na empresa
 		listaFalhas.add(novaFalha);
 	
 		System.out.println("Falha sem matrícula incluída com sucesso!");
@@ -886,7 +925,7 @@ public class Empresa {
 
         System.out.println("Informe a descrição do reparo que deseja encerrar:");
         String descricaoReparo = sc.nextLine();
-        sc.close();
+        
 
         for (Reparo reparo : listaReparos) {
             if (reparo.getDescricao().equals(descricaoReparo) && !reparo.isEstadoResolvido()) {
