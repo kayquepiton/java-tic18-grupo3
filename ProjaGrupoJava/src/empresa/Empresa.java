@@ -11,7 +11,7 @@ public class Empresa {
     private List<Fatura> listaFaturas = new ArrayList<Fatura>();
     private List<Falha> listaFalhas = new ArrayList<Falha>();
     private List<Reembolso> listaReembolsos = new ArrayList<Reembolso>();
-
+	
     
     //MENUS
     public void menuEmpresa() {
@@ -30,6 +30,8 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
+			sc.close();
+
         	switch(acao) {
         	case "0":
         		System.out.println("Finalizando operacao...");
@@ -59,6 +61,7 @@ public class Empresa {
             	System.out.println("Opcao invalida, insira novamente");
             	break;
         	}
+			
     	}
     }
     
@@ -78,6 +81,7 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
+			sc.close();
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
@@ -126,6 +130,7 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
+			sc.close();
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
@@ -172,6 +177,7 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
+			sc.close();
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
@@ -212,6 +218,7 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
+			sc.close();
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
@@ -258,6 +265,7 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
+			sc.close();
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
@@ -295,6 +303,7 @@ public class Empresa {
         	
         	acao = sc.nextLine();
         	System.out.println();
+			sc.close();
         	switch(acao) {
         	case "0":
         		System.out.println("Voltando...");
@@ -331,7 +340,7 @@ public class Empresa {
     	
     	System.out.println("Possui imovel cadastrado? (sim / nao): ");
     	String resposta = sc.nextLine();
-    	
+		
     	if(resposta != "sim") {
     		System.out.println("Cliente cadastrado com sucesso");
     		return;
@@ -362,6 +371,7 @@ public class Empresa {
     		listaClientes.add(cliente);
     		System.out.println("Cliente cadastrado com sucesso");
     	}
+		
     }
     
     public void consultarCliente() {
@@ -370,7 +380,8 @@ public class Empresa {
     	
     	System.out.println("CPF: ");
     	String cpf= sc.nextLine();
-    	
+    	sc.close();
+
     	boolean check = false;
     	int index = 0;
     	for(int i = 0; i < listaClientes.size(); i++) {
@@ -410,7 +421,8 @@ public class Empresa {
     	
     	System.out.println("CPF: ");
     	String cpf= sc.nextLine();
-    	
+    	sc.close();
+		
     	boolean check = false;
     	int index = 0;
     	for(int i = 0; i < listaClientes.size(); i++) {
@@ -464,6 +476,7 @@ public class Empresa {
     	
     	System.out.println("Deseja alterar o imovel? (sim / nao): ");
     	acao = sc.nextLine();
+
     	if(acao == "sim") {
     		System.out.println("Matricula do imovel: ");
         	String matricula = sc.nextLine();
@@ -509,6 +522,8 @@ public class Empresa {
 		System.out.println("Penúltima leitura: ");
 		float penultimaLeitura = Float.parseFloat(sc.nextLine());
 
+		sc.close();
+
 		Imovel imovel = new Imovel(matricula, endereco, ultimaLeitura, penultimaLeitura);
 		listaImoveis.add(imovel);
 
@@ -521,6 +536,7 @@ public class Empresa {
 
 		System.out.println("Matrícula do imóvel: ");
 		String matricula = sc.nextLine();
+		sc.close();
 
 		boolean check = false;
 		for (Imovel imovel : listaImoveis) {
@@ -560,6 +576,7 @@ public class Empresa {
 
 		System.out.println("Matrícula do imóvel: ");
 		String matricula = sc.nextLine();
+		sc.close();
 
 		boolean check = false;
 		for (Imovel imovel : listaImoveis) {
@@ -605,6 +622,8 @@ public class Empresa {
 
 				System.out.println("Nova penúltima leitura (deixe em branco para manter a atual): ");
 				String novaPenultimaLeituraStr = sc.nextLine();
+				sc.close();
+				
 				if (!novaPenultimaLeituraStr.isEmpty()) {
 					float novaPenultimaLeitura = Float.parseFloat(novaPenultimaLeituraStr);
 					imovel.setPenultimaLeitura(novaPenultimaLeitura);
@@ -652,6 +671,7 @@ public class Empresa {
 
         System.out.println("Informe o valor do pagamento:");
         float valorPagamento = Float.parseFloat(sc.nextLine());
+		sc.close();
 
         Pagamento pagamento = new Pagamento();
         pagamento.setValor(valorPagamento);
@@ -700,6 +720,7 @@ public class Empresa {
 
         System.out.println("Informe o ID da fatura:");
         String idFatura = sc.nextLine();
+		sc.close();
 
         Fatura faturaEncontrada = null;
         for (Fatura fatura : listaFaturas) {
